@@ -1,0 +1,4 @@
+#Tue Aug 15 12:14:25 JST 2023
+base.0=C\:\\Users\\sadayuki.yamamoto\\AndroidStudioProjects\\PixelShop2\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

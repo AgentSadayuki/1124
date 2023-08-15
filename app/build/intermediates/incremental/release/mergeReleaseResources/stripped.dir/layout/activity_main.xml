@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8sp">
+
+        <!-- 1つ目のカウンターセットの説明テキスト -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="集客数カウント"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8sp"
+            android:layout_marginBottom="8sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal">
+
+            <Button
+                android:id="@+id/newMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/newButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/newPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <!-- 2つ目のカウンターセットの説明テキスト -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接客数カウント"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="6sp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/secondMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/secondCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/secondPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接客数のうち、Pixelのみ接客した人数"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="8sp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/thirdMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/thirdCount"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/thirdPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接客数のうち、Pixel ＋他製品の接客ができた人数"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="8dp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/forthMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/forthCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/forthPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp"
+            android:text=" スイング数【キャリア】"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="8sp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/fifthMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/fifthCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/fifthPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="スイング数【Pixel Tablet】"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="8dp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/sixthMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/sixthCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/sixthPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="スイング数【Pixel Watch】"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="8dp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/seventhMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/seventhCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/seventhPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="スイング数【Pixel Buds】"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="8sp"> <!-- ここにマージンを設定する -->
+
+            <Button
+                android:id="@+id/eighthMinusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/eighthCount"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/eighthPlusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

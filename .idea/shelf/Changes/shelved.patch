@@ -1,0 +1,2145 @@
+Index: app/src/main/java/com/example/pixelshop2/SecondFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/pixelshop2/SecondFragment.kt b/app/src/main/java/com/example/pixelshop2/SecondFragment.kt
+new file mode 100644
+--- /dev/null	(date 1692012353007)
++++ b/app/src/main/java/com/example/pixelshop2/SecondFragment.kt	(date 1692012353007)
+@@ -0,0 +1,44 @@
++package com.example.pixelshop2
++
++import android.os.Bundle
++import androidx.fragment.app.Fragment
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import androidx.navigation.fragment.findNavController
++import com.example.pixelshop2.databinding.FragmentSecondBinding
++
++/**
++ * A simple [Fragment] subclass as the second destination in the navigation.
++ */
++class SecondFragment : Fragment() {
++
++    private var _binding: FragmentSecondBinding? = null
++
++    // This property is only valid between onCreateView and
++    // onDestroyView.
++    private val binding get() = _binding!!
++
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?,
++        savedInstanceState: Bundle?
++    ): View? {
++
++        _binding = FragmentSecondBinding.inflate(inflater, container, false)
++        return binding.root
++
++    }
++
++    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
++        super.onViewCreated(view, savedInstanceState)
++
++        binding.buttonSecond.setOnClickListener {
++            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
++        }
++    }
++
++    override fun onDestroyView() {
++        super.onDestroyView()
++        _binding = null
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/pixelshop2/FirstFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/pixelshop2/FirstFragment.kt b/app/src/main/java/com/example/pixelshop2/FirstFragment.kt
+new file mode 100644
+--- /dev/null	(date 1692012352991)
++++ b/app/src/main/java/com/example/pixelshop2/FirstFragment.kt	(date 1692012352991)
+@@ -0,0 +1,44 @@
++package com.example.pixelshop2
++
++import android.os.Bundle
++import androidx.fragment.app.Fragment
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import androidx.navigation.fragment.findNavController
++import com.example.pixelshop2.databinding.FragmentFirstBinding
++
++/**
++ * A simple [Fragment] subclass as the default destination in the navigation.
++ */
++class FirstFragment : Fragment() {
++
++    private var _binding: FragmentFirstBinding? = null
++
++    // This property is only valid between onCreateView and
++    // onDestroyView.
++    private val binding get() = _binding!!
++
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?,
++        savedInstanceState: Bundle?
++    ): View? {
++
++        _binding = FragmentFirstBinding.inflate(inflater, container, false)
++        return binding.root
++
++    }
++
++    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
++        super.onViewCreated(view, savedInstanceState)
++
++        binding.buttonFirst.setOnClickListener {
++            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
++        }
++    }
++
++    override fun onDestroyView() {
++        super.onDestroyView()
++        _binding = null
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/pixelshop2/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/pixelshop2/MainActivity.kt b/app/src/main/java/com/example/pixelshop2/MainActivity.kt
+new file mode 100644
+--- /dev/null	(date 1692067614245)
++++ b/app/src/main/java/com/example/pixelshop2/MainActivity.kt	(date 1692067614245)
+@@ -0,0 +1,158 @@
++package com.example.pixelshop2
++
++import android.os.Bundle
++import android.widget.Button
++import android.widget.TextView
++import androidx.appcompat.app.AppCompatActivity
++
++class MainActivity : AppCompatActivity() {
++
++    // Declare variables for counters
++    private var newCount = 0
++    private var secondCount = 0
++    private var thirdCount = 0
++    private var forthCount = 0
++    private var fifthCount = 0
++    private var sixthCount = 0
++    private var seventhCount = 0
++    private var eighthCount = 0
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_main)
++
++        // Find buttons and text views by their IDs
++        val newMinusButton: Button = findViewById(R.id.newMinusButton)
++        val newPlusButton: Button = findViewById(R.id.newPlusButton)
++        val secondMinusButton: Button = findViewById(R.id.secondMinusButton)
++        val secondPlusButton: Button = findViewById(R.id.secondPlusButton)
++        val thirdMinusButton: Button = findViewById(R.id.thirdMinusButton)
++        val thirdPlusButton: Button = findViewById(R.id.thirdPlusButton)
++        val forthMinusButton: Button = findViewById(R.id.forthMinusButton)
++        val forthPlusButton: Button = findViewById(R.id.forthPlusButton)
++        val fifthMinusButton: Button = findViewById(R.id.fifthMinusButton)
++        val fifthPlusButton: Button = findViewById(R.id.fifthPlusButton)
++        val sixthMinusButton: Button = findViewById(R.id.sixthMinusButton)
++        val sixthPlusButton: Button = findViewById(R.id.sixthPlusButton)
++        val seventhMinusButton: Button = findViewById(R.id.seventhMinusButton)
++        val seventhPlusButton: Button = findViewById(R.id.seventhPlusButton)
++        val eighthMinusButton: Button = findViewById(R.id.eighthMinusButton)
++        val eighthPlusButton: Button = findViewById(R.id.eighthPlusButton)
++
++        // Set click listeners for minus buttons
++        newMinusButton.setOnClickListener {
++            if (newCount > 0) {
++                newCount--
++                updateCounter(R.id.newButton, newCount)
++            }
++        }
++
++        // Set click listeners for plus buttons
++        newPlusButton.setOnClickListener {
++            newCount++
++            updateCounter(R.id.newButton, newCount)
++        }
++
++        secondMinusButton.setOnClickListener {
++            if (secondCount > 0) {
++                secondCount--
++                updateCounter(R.id.secondCount, secondCount)
++            }
++        }
++
++        secondPlusButton.setOnClickListener {
++            secondCount++
++            updateCounter(R.id.secondCount, secondCount)
++        }
++
++        thirdMinusButton.setOnClickListener {
++            if (thirdCount > 0) {
++                thirdCount--
++                updateCounter(R.id.thirdCount, thirdCount)
++            }
++        }
++
++        thirdPlusButton.setOnClickListener {
++            thirdCount++
++            updateCounter(R.id.thirdCount, thirdCount)
++        }
++
++        forthMinusButton.setOnClickListener {
++            if (forthCount > 0) {
++                forthCount--
++                updateCounter(R.id.forthCount, forthCount)
++            }
++        }
++
++        forthPlusButton.setOnClickListener {
++            forthCount++
++            updateCounter(R.id.forthCount, forthCount)
++        }
++
++        fifthMinusButton.setOnClickListener {
++            if (fifthCount > 0) {
++                fifthCount--
++                updateCounter(R.id.fifthCount, fifthCount)
++            }
++        }
++
++        fifthPlusButton.setOnClickListener {
++            fifthCount++
++            updateCounter(R.id.fifthCount, fifthCount)
++        }
++
++        sixthMinusButton.setOnClickListener {
++            if (sixthCount > 0) {
++                sixthCount--
++                updateCounter(R.id.sixthCount, sixthCount)
++            }
++        }
++
++        sixthPlusButton.setOnClickListener {
++            sixthCount++
++            updateCounter(R.id.fifthCount, fifthCount)
++        }
++
++        seventhMinusButton.setOnClickListener {
++            if (seventhCount > 0) {
++                seventhCount--
++                updateCounter(R.id.seventhCount, seventhCount)
++            }
++        }
++
++        eighthPlusButton.setOnClickListener {
++            eighthCount++
++            updateCounter(R.id.eighthCount, eighthCount)
++        }
++
++        eighthMinusButton.setOnClickListener {
++            if (eighthCount > 0) {
++                eighthCount--
++                updateCounter(R.id.eighthCount, eighthCount)
++            }
++        }
++
++        seventhPlusButton.setOnClickListener {
++            seventhCount++
++            updateCounter(R.id.seventhCount, seventhCount)
++        }
++
++        // ... Repeat similar logic for other minus/plus buttons ...
++
++        // Set initial counts for text views
++        updateCounter(R.id.newButton, newCount)
++        updateCounter(R.id.secondCount, secondCount)
++        updateCounter(R.id.thirdCount, thirdCount)
++        updateCounter(R.id.forthCount, forthCount)
++        updateCounter(R.id.fifthCount, fifthCount)
++        updateCounter(R.id.sixthCount, sixthCount)
++        updateCounter(R.id.seventhCount, seventhCount)
++        updateCounter(R.id.eighthCount, eighthCount)
++    }
++
++    // Function to update the counter text view
++    private fun updateCounter(textViewId: Int, count: Int) {
++        val textView: TextView = findViewById(textViewId)
++        textView.text = count.toString()
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/menu/menu_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/menu_main.xml b/app/src/main/res/menu/menu_main.xml
+new file mode 100644
+--- /dev/null	(date 1692012352932)
++++ b/app/src/main/res/menu/menu_main.xml	(date 1692012352932)
+@@ -0,0 +1,10 @@
++<menu xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    tools:context="com.example.pixelshop2.MainActivity">
++    <item
++        android:id="@+id/action_settings"
++        android:orderInCategory="100"
++        android:title="@string/action_settings"
++        app:showAsAction="never" />
++</menu>
+\ No newline at end of file
+Index: app/src/main/res/navigation/nav_graph.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/nav_graph.xml b/app/src/main/res/navigation/nav_graph.xml
+new file mode 100644
+--- /dev/null	(date 1692012353083)
++++ b/app/src/main/res/navigation/nav_graph.xml	(date 1692012353083)
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<navigation xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/nav_graph"
++    app:startDestination="@id/FirstFragment">
++
++    <fragment
++        android:id="@+id/FirstFragment"
++        android:name="com.example.pixelshop2.FirstFragment"
++        android:label="@string/first_fragment_label"
++        tools:layout="@layout/fragment_first">
++
++        <action
++            android:id="@+id/action_FirstFragment_to_SecondFragment"
++            app:destination="@id/SecondFragment" />
++    </fragment>
++    <fragment
++        android:id="@+id/SecondFragment"
++        android:name="com.example.pixelshop2.SecondFragment"
++        android:label="@string/second_fragment_label"
++        tools:layout="@layout/fragment_second">
++
++        <action
++            android:id="@+id/action_SecondFragment_to_FirstFragment"
++            app:destination="@id/FirstFragment" />
++    </fragment>
++</navigation>
+\ No newline at end of file
+Index: app/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/.gitignore b/app/.gitignore
+new file mode 100644
+--- /dev/null	(date 1692012350707)
++++ b/app/.gitignore	(date 1692012350707)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_second.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_second.xml b/app/src/main/res/layout/fragment_second.xml
+new file mode 100644
+--- /dev/null	(date 1692012353074)
++++ b/app/src/main/res/layout/fragment_second.xml	(date 1692012353074)
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".SecondFragment">
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:padding="16dp">
++
++        <Button
++            android:id="@+id/button_second"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/previous"
++            app:layout_constraintBottom_toTopOf="@id/textview_second"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++        <TextView
++            android:id="@+id/textview_second"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="16dp"
++            android:text="@string/lorem_ipsum"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@id/button_second" />
++    </androidx.constraintlayout.widget.ConstraintLayout>
++</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+new file mode 100644
+--- /dev/null	(date 1692067966176)
++++ b/app/src/main/AndroidManifest.xml	(date 1692067966176)
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools">
++
++    <application
++        android:allowBackup="true"
++        android:dataExtractionRules="@xml/data_extraction_rules"
++        android:fullBackupContent="@xml/backup_rules"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:roundIcon="@mipmap/ic_launcher_round"
++        android:supportsRtl="true"
++        android:theme="@style/Theme.PixelShop2"
++        tools:targetApi="34">
++        <activity
++            android:name=".MainActivity"
++            android:exported="true"
++            android:label="@string/app_name"
++            android:theme="@style/Theme.PixelShop2">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++    </application>
++
++</manifest>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_first.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_first.xml b/app/src/main/res/layout/fragment_first.xml
+new file mode 100644
+--- /dev/null	(date 1692012353038)
++++ b/app/src/main/res/layout/fragment_first.xml	(date 1692012353038)
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".FirstFragment">
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:padding="16dp">
++
++        <Button
++            android:id="@+id/button_first"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/next"
++            app:layout_constraintBottom_toTopOf="@id/textview_first"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++        <TextView
++            android:id="@+id/textview_first"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="16dp"
++            android:text="@string/lorem_ipsum"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@id/button_first" />
++    </androidx.constraintlayout.widget.ConstraintLayout>
++</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1692068381611)
++++ b/app/build.gradle.kts	(date 1692068381611)
+@@ -0,0 +1,53 @@
++plugins {
++    id("com.android.application")
++    id("org.jetbrains.kotlin.android")
++}
++
++android {
++    namespace = "com.example.pixelshop2"
++    compileSdk = 34
++
++    defaultConfig {
++        applicationId = "com.example.pixelshop2"
++        minSdk = 24
++        //noinspection EditedTargetSdkVersion
++        targetSdk = 34
++        versionCode = 1
++        versionName = "1.0"
++
++        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
++    }
++
++    buildTypes {
++        release {
++            isMinifyEnabled = false
++            proguardFiles(
++                getDefaultProguardFile("proguard-android-optimize.txt"),
++                "proguard-rules.pro"
++            )
++        }
++    }
++    compileOptions {
++        sourceCompatibility = JavaVersion.VERSION_1_8
++        targetCompatibility = JavaVersion.VERSION_1_8
++    }
++    kotlinOptions {
++        jvmTarget = "1.8"
++    }
++    buildFeatures {
++        viewBinding = true
++    }
++}
++
++dependencies {
++
++    implementation("androidx.core:core-ktx:1.10.1")
++    implementation("androidx.appcompat:appcompat:1.6.1")
++    implementation("com.google.android.material:material:1.9.0")
++    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
++    implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
++    implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
++    testImplementation("junit:junit:4.13.2")
++    androidTestImplementation("androidx.test.ext:junit:1.1.5")
++    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
++}
+\ No newline at end of file
+Index: gradlew.bat
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradlew.bat b/gradlew.bat
+new file mode 100644
+--- /dev/null	(date 1692012350189)
++++ b/gradlew.bat	(date 1692012350189)
+@@ -0,0 +1,89 @@
++@rem
++@rem Copyright 2015 the original author or authors.
++@rem
++@rem Licensed under the Apache License, Version 2.0 (the "License");
++@rem you may not use this file except in compliance with the License.
++@rem You may obtain a copy of the License at
++@rem
++@rem      https://www.apache.org/licenses/LICENSE-2.0
++@rem
++@rem Unless required by applicable law or agreed to in writing, software
++@rem distributed under the License is distributed on an "AS IS" BASIS,
++@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++@rem See the License for the specific language governing permissions and
++@rem limitations under the License.
++@rem
++
++@if "%DEBUG%" == "" @echo off
++@rem ##########################################################################
++@rem
++@rem  Gradle startup script for Windows
++@rem
++@rem ##########################################################################
++
++@rem Set local scope for the variables with windows NT shell
++if "%OS%"=="Windows_NT" setlocal
++
++set DIRNAME=%~dp0
++if "%DIRNAME%" == "" set DIRNAME=.
++set APP_BASE_NAME=%~n0
++set APP_HOME=%DIRNAME%
++
++@rem Resolve any "." and ".." in APP_HOME to make it shorter.
++for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
++
++@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
++
++@rem Find java.exe
++if defined JAVA_HOME goto findJavaFromJavaHome
++
++set JAVA_EXE=java.exe
++%JAVA_EXE% -version >NUL 2>&1
++if "%ERRORLEVEL%" == "0" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:findJavaFromJavaHome
++set JAVA_HOME=%JAVA_HOME:"=%
++set JAVA_EXE=%JAVA_HOME%/bin/java.exe
++
++if exist "%JAVA_EXE%" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:execute
++@rem Setup the command line
++
++set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
++
++
++@rem Execute Gradle
++"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
++
++:end
++@rem End local scope for the variables with windows NT shell
++if "%ERRORLEVEL%"=="0" goto mainEnd
++
++:fail
++rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
++rem the _cmd.exe /c_ return code!
++if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
++exit /b 1
++
++:mainEnd
++if "%OS%"=="Windows_NT" endlocal
++
++:omega
+Index: app/src/main/res/values-w600dp/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-w600dp/dimens.xml b/app/src/main/res/values-w600dp/dimens.xml
+new file mode 100644
+--- /dev/null	(date 1692012352889)
++++ b/app/src/main/res/values-w600dp/dimens.xml	(date 1692012352889)
+@@ -0,0 +1,3 @@
++<resources>
++    <dimen name="fab_margin">48dp</dimen>
++</resources>
+\ No newline at end of file
+Index: gradlew
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradlew b/gradlew
+new file mode 100644
+--- /dev/null	(date 1692012350175)
++++ b/gradlew	(date 1692012350175)
+@@ -0,0 +1,185 @@
++#!/usr/bin/env sh
++
++#
++# Copyright 2015 the original author or authors.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#      https://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++#
++
++##############################################################################
++##
++##  Gradle start up script for UN*X
++##
++##############################################################################
++
++# Attempt to set APP_HOME
++# Resolve links: $0 may be a link
++PRG="$0"
++# Need this for relative symlinks.
++while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++        PRG="$link"
++    else
++        PRG=`dirname "$PRG"`"/$link"
++    fi
++done
++SAVED="`pwd`"
++cd "`dirname \"$PRG\"`/" >/dev/null
++APP_HOME="`pwd -P`"
++cd "$SAVED" >/dev/null
++
++APP_NAME="Gradle"
++APP_BASE_NAME=`basename "$0"`
++
++# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
++
++# Use the maximum available, or set MAX_FD != -1 to use that value.
++MAX_FD="maximum"
++
++warn () {
++    echo "$*"
++}
++
++die () {
++    echo
++    echo "$*"
++    echo
++    exit 1
++}
++
++# OS specific support (must be 'true' or 'false').
++cygwin=false
++msys=false
++darwin=false
++nonstop=false
++case "`uname`" in
++  CYGWIN* )
++    cygwin=true
++    ;;
++  Darwin* )
++    darwin=true
++    ;;
++  MINGW* )
++    msys=true
++    ;;
++  NONSTOP* )
++    nonstop=true
++    ;;
++esac
++
++CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
++
++
++# Determine the Java command to use to start the JVM.
++if [ -n "$JAVA_HOME" ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++        # IBM's JDK on AIX uses strange locations for the executables
++        JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++        JAVACMD="$JAVA_HOME/bin/java"
++    fi
++    if [ ! -x "$JAVACMD" ] ; then
++        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++    fi
++else
++    JAVACMD="java"
++    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++fi
++
++# Increase the maximum file descriptors if we can.
++if [ "$cygwin" = "false" -a "$darwin" = "false" -a "$nonstop" = "false" ] ; then
++    MAX_FD_LIMIT=`ulimit -H -n`
++    if [ $? -eq 0 ] ; then
++        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
++            MAX_FD="$MAX_FD_LIMIT"
++        fi
++        ulimit -n $MAX_FD
++        if [ $? -ne 0 ] ; then
++            warn "Could not set maximum file descriptor limit: $MAX_FD"
++        fi
++    else
++        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
++    fi
++fi
++
++# For Darwin, add options to specify how the application appears in the dock
++if $darwin; then
++    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
++fi
++
++# For Cygwin or MSYS, switch paths to Windows format before running java
++if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
++    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
++    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
++
++    JAVACMD=`cygpath --unix "$JAVACMD"`
++
++    # We build the pattern for arguments to be converted via cygpath
++    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
++    SEP=""
++    for dir in $ROOTDIRSRAW ; do
++        ROOTDIRS="$ROOTDIRS$SEP$dir"
++        SEP="|"
++    done
++    OURCYGPATTERN="(^($ROOTDIRS))"
++    # Add a user-defined pattern to the cygpath arguments
++    if [ "$GRADLE_CYGPATTERN" != "" ] ; then
++        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
++    fi
++    # Now convert the arguments - kludge to limit ourselves to /bin/sh
++    i=0
++    for arg in "$@" ; do
++        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
++        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
++
++        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
++            eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
++        else
++            eval `echo args$i`="\"$arg\""
++        fi
++        i=`expr $i + 1`
++    done
++    case $i in
++        0) set -- ;;
++        1) set -- "$args0" ;;
++        2) set -- "$args0" "$args1" ;;
++        3) set -- "$args0" "$args1" "$args2" ;;
++        4) set -- "$args0" "$args1" "$args2" "$args3" ;;
++        5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
++        6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
++        7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
++        8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
++        9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
++    esac
++fi
++
++# Escape application args
++save () {
++    for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
++    echo " "
++}
++APP_ARGS=`save "$@"`
++
++# Collect all arguments for the java command, following the shell quoting and substitution rules
++eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
++
++exec "$JAVACMD" "$@"
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+new file mode 100644
+--- /dev/null	(date 1692012353176)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1692012353176)
+@@ -0,0 +1,6 @@
++#Mon Aug 14 20:25:53 JST 2023
++distributionBase=GRADLE_USER_HOME
++distributionPath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
++zipStoreBase=GRADLE_USER_HOME
++zipStorePath=wrapper/dists
+Index: app/src/main/res/values-land/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-land/dimens.xml b/app/src/main/res/values-land/dimens.xml
+new file mode 100644
+--- /dev/null	(date 1692012352876)
++++ b/app/src/main/res/values-land/dimens.xml	(date 1692012352876)
+@@ -0,0 +1,3 @@
++<resources>
++    <dimen name="fab_margin">48dp</dimen>
++</resources>
+\ No newline at end of file
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1692068297239)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1692068297239)
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <runningDeviceTargetSelectedWithDropDown>
++      <Target>
++        <type value="RUNNING_DEVICE_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\sadayuki.yamamoto\.android\avd\Pixel_7_Pro_API_34.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </runningDeviceTargetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2023-08-15T02:57:54.284117800Z" />
++    <runningDeviceTargetsSelectedWithDialog>
++      <Target>
++        <type value="RUNNING_DEVICE_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\sadayuki.yamamoto\.android\avd\Pixel_7_Pro_API_29.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </runningDeviceTargetsSelectedWithDialog>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/content_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/content_main.xml b/app/src/main/res/layout/content_main.xml
+new file mode 100644
+--- /dev/null	(date 1692012352916)
++++ b/app/src/main/res/layout/content_main.xml	(date 1692012352916)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    app:layout_behavior="@string/appbar_scrolling_view_behavior">
++
++    <fragment
++        android:id="@+id/nav_host_fragment_content_main"
++        android:name="androidx.navigation.fragment.NavHostFragment"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        app:defaultNavHost="true"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:navGraph="@navigation/nav_graph" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/values-w1240dp/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-w1240dp/dimens.xml b/app/src/main/res/values-w1240dp/dimens.xml
+new file mode 100644
+--- /dev/null	(date 1692012352901)
++++ b/app/src/main/res/values-w1240dp/dimens.xml	(date 1692012352901)
+@@ -0,0 +1,3 @@
++<resources>
++    <dimen name="fab_margin">200dp</dimen>
++</resources>
+\ No newline at end of file
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1692012351173)
++++ b/settings.gradle.kts	(date 1692012351173)
+@@ -0,0 +1,18 @@
++pluginManagement {
++    repositories {
++        google()
++        mavenCentral()
++        gradlePluginPortal()
++    }
++}
++dependencyResolutionManagement {
++    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
++    repositories {
++        google()
++        mavenCentral()
++    }
++}
++
++rootProject.name = "Pixel Shop 2"
++include(":app")
++ 
+\ No newline at end of file
+Index: .idea/kotlinc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/kotlinc.xml b/.idea/kotlinc.xml
+new file mode 100644
+--- /dev/null	(date 1692012430053)
++++ b/.idea/kotlinc.xml	(date 1692012430053)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="KotlinJpsPluginSettings">
++    <option name="version" value="1.8.0" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/xml/data_extraction_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/data_extraction_rules.xml b/app/src/main/res/xml/data_extraction_rules.xml
+new file mode 100644
+--- /dev/null	(date 1692012352301)
++++ b/app/src/main/res/xml/data_extraction_rules.xml	(date 1692012352301)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample data extraction rules file; uncomment and customize as necessary.
++   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
++   for details.
++-->
++<data-extraction-rules>
++    <cloud-backup>
++        <!-- TODO: Use <include> and <exclude> to control what is backed up.
++        <include .../>
++        <exclude .../>
++        -->
++    </cloud-backup>
++    <!--
++    <device-transfer>
++        <include .../>
++        <exclude .../>
++    </device-transfer>
++    -->
++</data-extraction-rules>
+\ No newline at end of file
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1692012429768)
++++ b/.idea/.name	(date 1692012429768)
+@@ -0,0 +1,1 @@
++Pixel Shop 2
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1692012349826)
++++ b/.gitignore	(date 1692012349826)
+@@ -0,0 +1,15 @@
++*.iml
++.gradle
++/local.properties
++/.idea/caches
++/.idea/libraries
++/.idea/modules.xml
++/.idea/workspace.xml
++/.idea/navEditor.xml
++/.idea/assetWizardSettings.xml
++.DS_Store
++/build
++/captures
++.externalNativeBuild
++.cxx
++local.properties
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1692012351231)
++++ b/build.gradle.kts	(date 1692012351231)
+@@ -0,0 +1,5 @@
++// Top-level build file where you can add configuration options common to all sub-projects/modules.
++plugins {
++    id("com.android.application") version "8.1.0" apply false
++    id("org.jetbrains.kotlin.android") version "1.8.0" apply false
++}
+\ No newline at end of file
+Index: app/src/main/res/xml/backup_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/backup_rules.xml b/app/src/main/res/xml/backup_rules.xml
+new file mode 100644
+--- /dev/null	(date 1692012352289)
++++ b/app/src/main/res/xml/backup_rules.xml	(date 1692012352289)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample backup rules file; uncomment and customize as necessary.
++   See https://developer.android.com/guide/topics/data/autobackup
++   for details.
++   Note: This file is ignored for devices older that API 31
++   See https://developer.android.com/about/versions/12/backup-restore
++-->
++<full-backup-content>
++    <!--
++   <include domain="sharedpref" path="."/>
++   <exclude domain="sharedpref" path="device.xml"/>
++-->
++</full-backup-content>
+\ No newline at end of file
+Index: app/src/main/res/values/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/dimens.xml b/app/src/main/res/values/dimens.xml
+new file mode 100644
+--- /dev/null	(date 1692012352862)
++++ b/app/src/main/res/values/dimens.xml	(date 1692012352862)
+@@ -0,0 +1,3 @@
++<resources>
++    <dimen name="fab_margin">16dp</dimen>
++</resources>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1692012430015)
++++ b/.idea/compiler.xml	(date 1692012430015)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="17" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+new file mode 100644
+--- /dev/null	(date 1692067335160)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1692067335160)
+@@ -0,0 +1,356 @@
++<?xml version="1.0" encoding="utf-8"?>
++<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:padding="25sp">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="vertical"
++        android:gravity="center_vertical"
++        android:layout_marginTop="8sp">
++
++        <!-- 1つ目のカウンターセットの説明テキスト -->
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="集客数カウント"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="8sp"
++            android:layout_marginBottom="8sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal">
++
++            <Button
++                android:id="@+id/newMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/newButton"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/newPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++
++        <!-- 2つ目のカウンターセットの説明テキスト -->
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="接客数カウント"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="10sp"
++            android:layout_marginBottom="10sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="6sp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/secondMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/secondCount"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/secondPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="接客数のうち、Pixelのみ接客した人数"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="16sp"
++            android:layout_marginBottom="8sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="8sp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/thirdMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/thirdCount"
++                android:layout_width="0sp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/thirdPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="接客数のうち、Pixel ＋他製品の接客ができた人数"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="16sp"
++            android:layout_marginBottom="8sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="8dp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/forthMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/forthCount"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/forthPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="16sp"
++            android:layout_marginBottom="8sp"
++            android:text=" スイング数【キャリア】"
++            android:textSize="13sp"
++            android:textStyle="bold"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="8sp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/fifthMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/fifthCount"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/fifthPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="スイング数【Pixel Tablet】"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="16sp"
++            android:layout_marginBottom="8sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="8dp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/sixthMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/sixthCount"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/sixthPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="スイング数【Pixel Watch】"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="16sp"
++            android:layout_marginBottom="8sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="8dp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/seventhMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/seventhCount"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/seventhPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="スイング数【Pixel Buds】"
++            android:textStyle="bold"
++            android:textSize="13sp"
++            android:layout_gravity="center_horizontal"
++            android:layout_marginTop="16sp"
++            android:layout_marginBottom="8sp"
++            tools:ignore="HardcodedText" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|center_horizontal"
++            android:layout_marginTop="8sp"> <!-- ここにマージンを設定する -->
++
++            <Button
++                android:id="@+id/eighthMinusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="-"
++                tools:ignore="HardcodedText" />
++
++            <TextView
++                android:id="@+id/eighthCount"
++                android:layout_width="0sp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="0"
++                android:gravity="center"
++                tools:ignore="HardcodedText" />
++
++            <Button
++                android:id="@+id/eighthPlusButton"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="+"
++                tools:ignore="HardcodedText" />
++
++        </LinearLayout>
++
++    </LinearLayout>
++</ScrollView>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1692012668369)
++++ b/.idea/misc.xml	(date 1692012668369)
+@@ -0,0 +1,9 @@
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/values-v23/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-v23/themes.xml b/app/src/main/res/values-v23/themes.xml
+new file mode 100644
+--- /dev/null	(date 1692012352786)
++++ b/app/src/main/res/values-v23/themes.xml	(date 1692012352786)
+@@ -0,0 +1,9 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++
++    <style name="Theme.PixelShop2" parent="Base.Theme.PixelShop2">
++        <!-- Transparent system bars for edge-to-edge. -->
++        <item name="android:navigationBarColor">@android:color/transparent</item>
++        <item name="android:statusBarColor">@android:color/transparent</item>
++        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
++    </style>
++</resources>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1692012699926)
++++ b/.idea/gradle.xml	(date 1692012699926)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="GRADLE" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="jbr-17" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: gradle.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle.properties b/gradle.properties
+new file mode 100644
+--- /dev/null	(date 1692012350577)
++++ b/gradle.properties	(date 1692012350577)
+@@ -0,0 +1,23 @@
++# Project-wide Gradle settings.
++# IDE (e.g. Android Studio) users:
++# Gradle settings configured through the IDE *will override*
++# any settings specified in this file.
++# For more details on how to configure your build environment visit
++# http://www.gradle.org/docs/current/userguide/build_environment.html
++# Specifies the JVM arguments used for the daemon process.
++# The setting is particularly useful for tweaking memory settings.
++org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
++# When configured, Gradle will run in incubating parallel mode.
++# This option should only be used with decoupled projects. More details, visit
++# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
++# org.gradle.parallel=true
++# AndroidX package structure to make it clearer which packages are bundled with the
++# Android operating system, and which are packaged with your app's APK
++# https://developer.android.com/topic/libraries/support-library/androidx-rn
++android.useAndroidX=true
++# Kotlin code style for this project: "official" or "obsolete":
++kotlin.code.style=official
++# Enables namespacing of each library's R class so that its R class includes only the
++# resources declared in the library itself and none from the library's dependencies,
++# thereby reducing the size of the R class for that library
++android.nonTransitiveRClass=true
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+new file mode 100644
+--- /dev/null	(date 1692012352601)
++++ b/app/src/main/res/values/strings.xml	(date 1692012352601)
+@@ -0,0 +1,46 @@
++<resources>
++    <string name="app_name">Pixel Shop 2</string>
++    <string name="action_settings">Settings</string>
++    <!-- Strings used for fragments for navigation -->
++    <string name="first_fragment_label">First Fragment</string>
++    <string name="second_fragment_label">Second Fragment</string>
++    <string name="next">Next</string>
++    <string name="previous">Previous</string>
++
++    <string name="lorem_ipsum">
++        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
++        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
++        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
++        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
++        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
++        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
++        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
++        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
++        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
++        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
++        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
++        bibendum, vel congue leo egestas.\n\n
++        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
++        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
++        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
++        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
++        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
++        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
++        est.\n\n
++        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
++        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
++        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
++        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
++        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
++        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
++        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
++        convallis.\n\n
++        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
++        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
++        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
++        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
++        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
++        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
++        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
++    </string>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+new file mode 100644
+--- /dev/null	(date 1692012352112)
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(date 1692012352112)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_launcher_foreground.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_foreground.xml b/app/src/main/res/drawable/ic_launcher_foreground.xml
+new file mode 100644
+--- /dev/null	(date 1692012352097)
++++ b/app/src/main/res/drawable/ic_launcher_foreground.xml	(date 1692012352097)
+@@ -0,0 +1,30 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:aapt="http://schemas.android.com/aapt"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
++        <aapt:attr name="android:fillColor">
++            <gradient
++                android:endX="85.84757"
++                android:endY="92.4963"
++                android:startX="42.9492"
++                android:startY="49.59793"
++                android:type="linear">
++                <item
++                    android:color="#44000000"
++                    android:offset="0.0" />
++                <item
++                    android:color="#00000000"
++                    android:offset="1.0" />
++            </gradient>
++        </aapt:attr>
++    </path>
++    <path
++        android:fillColor="#FFFFFF"
++        android:fillType="nonZero"
++        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
++        android:strokeWidth="1"
++        android:strokeColor="#00000000" />
++</vector>
+\ No newline at end of file
+Index: app/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-night/themes.xml b/app/src/main/res/values-night/themes.xml
+new file mode 100644
+--- /dev/null	(date 1692012352354)
++++ b/app/src/main/res/values-night/themes.xml	(date 1692012352354)
+@@ -0,0 +1,7 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Base.Theme.PixelShop2" parent="Theme.Material3.DayNight.NoActionBar">
++        <!-- Customize your dark theme here. -->
++        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+new file mode 100644
+--- /dev/null	(date 1692012352258)
++++ b/app/src/main/res/values/colors.xml	(date 1692012352258)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="black">#FF000000</color>
++    <color name="white">#FFFFFFFF</color>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+new file mode 100644
+--- /dev/null	(date 1692012352342)
++++ b/app/src/main/res/values/themes.xml	(date 1692012352342)
+@@ -0,0 +1,9 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Base.Theme.PixelShop2" parent="Theme.Material3.DayNight.NoActionBar">
++        <!-- Customize your light theme here. -->
++        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
++    </style>
++
++    <style name="Theme.PixelShop2" parent="Base.Theme.PixelShop2" />
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_launcher_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+new file mode 100644
+--- /dev/null	(date 1692012352074)
++++ b/app/src/main/res/drawable/ic_launcher_background.xml	(date 1692012352074)
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path
++        android:fillColor="#3DDC84"
++        android:pathData="M0,0h108v108h-108z" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M9,0L9,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,0L19,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,0L29,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,0L39,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,0L49,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,0L59,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,0L69,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,0L79,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M89,0L89,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M99,0L99,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,9L108,9"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,19L108,19"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,29L108,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,39L108,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,49L108,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,59L108,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,69L108,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,79L108,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,89L108,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,99L108,99"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,29L89,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,39L89,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,49L89,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,59L89,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,69L89,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,79L89,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,19L29,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,19L39,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,19L49,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,19L59,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,19L69,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,19L79,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++</vector>
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+new file mode 100644
+--- /dev/null	(date 1692012351739)
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(date 1692012351739)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: app/release/output-metadata.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/release/output-metadata.json b/app/release/output-metadata.json
+new file mode 100644
+--- /dev/null	(date 1692069266385)
++++ b/app/release/output-metadata.json	(date 1692069266385)
+@@ -0,0 +1,20 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "APK",
++    "kind": "Directory"
++  },
++  "applicationId": "com.example.pixelshop2",
++  "variantName": "release",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "versionCode": 1,
++      "versionName": "1.0",
++      "outputFile": "app-release.apk"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+Index: app/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/proguard-rules.pro b/app/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1692012350805)
++++ b/app/proguard-rules.pro	(date 1692012350805)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: app/src/androidTest/java/com/example/pixelshop2/ExampleInstrumentedTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/pixelshop2/ExampleInstrumentedTest.kt b/app/src/androidTest/java/com/example/pixelshop2/ExampleInstrumentedTest.kt
+new file mode 100644
+--- /dev/null	(date 1692012351708)
++++ b/app/src/androidTest/java/com/example/pixelshop2/ExampleInstrumentedTest.kt	(date 1692012351708)
+@@ -0,0 +1,24 @@
++package com.example.pixelshop2
++
++import androidx.test.platform.app.InstrumentationRegistry
++import androidx.test.ext.junit.runners.AndroidJUnit4
++
++import org.junit.Test
++import org.junit.runner.RunWith
++
++import org.junit.Assert.*
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++@RunWith(AndroidJUnit4::class)
++class ExampleInstrumentedTest {
++    @Test
++    fun useAppContext() {
++        // Context of the app under test.
++        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
++        assertEquals("com.example.pixelshop2", appContext.packageName)
++    }
++}
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1692069909667)
++++ b/.idea/vcs.xml	(date 1692069909667)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1692012354985)
++++ b/.idea/.gitignore	(date 1692012354985)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: app/src/test/java/com/example/pixelshop2/ExampleUnitTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/test/java/com/example/pixelshop2/ExampleUnitTest.kt b/app/src/test/java/com/example/pixelshop2/ExampleUnitTest.kt
+new file mode 100644
+--- /dev/null	(date 1692012351664)
++++ b/app/src/test/java/com/example/pixelshop2/ExampleUnitTest.kt	(date 1692012351664)
+@@ -0,0 +1,17 @@
++package com.example.pixelshop2
++
++import org.junit.Test
++
++import org.junit.Assert.*
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++class ExampleUnitTest {
++    @Test
++    fun addition_isCorrect() {
++        assertEquals(4, 2 + 2)
++    }
++}
+\ No newline at end of file

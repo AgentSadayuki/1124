@@ -1,0 +1,6 @@
+com.example.pixelshop2.test.app-annotation-experimental-1.3.0-0 C:\Users\sadayuki.yamamoto\.gradle\caches\transforms-3\2cb4b5a46196d7fcbae48de0cc76e1e0\transformed\annotation-experimental-1.3.0\res
+com.example.pixelshop2.test.app-core-1.5.0-1 C:\Users\sadayuki.yamamoto\.gradle\caches\transforms-3\e3e60d3267ff99f2ffe64e4464df67f4\transformed\core-1.5.0\res
+com.example.pixelshop2.test.app-androidTest-2 C:\Users\sadayuki.yamamoto\AndroidStudioProjects\PixelShop2\app\build\generated\res\resValues\androidTest\debug
+com.example.pixelshop2.test.app-mergeDebugAndroidTestResources-3 C:\Users\sadayuki.yamamoto\AndroidStudioProjects\PixelShop2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.pixelshop2.test.app-mergeDebugAndroidTestResources-4 C:\Users\sadayuki.yamamoto\AndroidStudioProjects\PixelShop2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.pixelshop2.test.app-merged_res-5 C:\Users\sadayuki.yamamoto\AndroidStudioProjects\PixelShop2\app\build\intermediates\merged_res\debugAndroidTest
